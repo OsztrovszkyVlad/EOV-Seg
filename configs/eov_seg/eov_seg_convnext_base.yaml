@@ -16,12 +16,14 @@ MODEL:
       PANOPTIC_ON: True
       OBJECT_MASK_THRESHOLD: 0.0
   OV_HEAD:
-    CLIP_MODEL_NAME: "RN50"
-    CLIP_PRETRAINED_WEIGHTS: "openai"
+    # Better CNN backbone - ConvNeXt trained on 2B images
+    CLIP_MODEL_NAME: "convnext_base_w"
+    CLIP_PRETRAINED_WEIGHTS: "laion2b_s13b_b82k_augreg"
+    # Better ViT backbone - ViT trained on 2B images
     CLIP_VIT_MODEL_NAME: "ViT-B-16"
-    CLIP_VIT_PRETRAINED_WEIGHTS: "openai"
+    CLIP_VIT_PRETRAINED_WEIGHTS: "laion2b_s34b_b88k"
     EMBED_DIM: 1024
     ENSEMBLE_ON_VALID_MASK: True
     GEOMETRIC_ENSEMBLE_ALPHA: 0.4
     GEOMETRIC_ENSEMBLE_BETA: 0.8
-OUTPUT_DIR: "output/eov_seg_r50"
+OUTPUT_DIR: "output/eov_seg_convnext_base"

@@ -4,7 +4,7 @@ DATASETS:
   TEST: ("openvocab_cityscapes_fine_panoptic_val",)
 MODEL:
   BACKBONE:
-    NAME: "CLIP"
+    NAME: "CLIP"  # Keep CLIP for CNN backbone
   WEIGHTS: ""
   EOV_SEG:
     NUM_PROPOSALS: 100
@@ -16,12 +16,15 @@ MODEL:
       PANOPTIC_ON: True
       OBJECT_MASK_THRESHOLD: 0.0
   OV_HEAD:
+    # CNN backbone (for multi-scale features)
     CLIP_MODEL_NAME: "RN50"
     CLIP_PRETRAINED_WEIGHTS: "openai"
-    CLIP_VIT_MODEL_NAME: "ViT-B-16"
-    CLIP_VIT_PRETRAINED_WEIGHTS: "openai"
-    EMBED_DIM: 1024
+    # ViT backbone - use SigLIP instead of CLIP ViT
+    CLIP_VIT_MODEL_NAME: "ViT-B-16"  # Placeholder, will be overridden
+    CLIP_VIT_PRETRAINED_WEIGHTS: "openai"  # Placeholder
+    SIGLIP_MODEL_NAME: "google/siglip-base-patch16-256"
+    EMBED_DIM: 768
     ENSEMBLE_ON_VALID_MASK: True
     GEOMETRIC_ENSEMBLE_ALPHA: 0.4
     GEOMETRIC_ENSEMBLE_BETA: 0.8
-OUTPUT_DIR: "output/eov_seg_r50"
+OUTPUT_DIR: "output/eov_seg_siglip_base"

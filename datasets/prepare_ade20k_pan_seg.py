@@ -426,7 +426,7 @@ if __name__ == "__main__":
                 assert pan_seg[mask].sum() == 0
 
                 segment_id, color = id_generator.get_id_and_color(semantic_cat_id)
-                pan_seg[mask] = color
+                pan_seg[mask, :] = color
 
                 area = np.sum(mask)  # segment area computation
                 # bbox computation for a segment
@@ -461,7 +461,7 @@ if __name__ == "__main__":
                 semantic_cat_id = map_id[instance_cat_id[0]]
 
                 segment_id, color = id_generator.get_id_and_color(semantic_cat_id)
-                pan_seg[mask] = color
+                pan_seg[mask, :] = color
 
                 area = np.sum(mask)  # segment area computation
                 # bbox computation for a segment

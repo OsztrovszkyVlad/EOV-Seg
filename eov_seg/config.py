@@ -62,3 +62,6 @@ def add_eov_config(cfg):
     cfg.MODEL.OV_HEAD.GEOMETRIC_ENSEMBLE_ALPHA = 0.4
     cfg.MODEL.OV_HEAD.GEOMETRIC_ENSEMBLE_BETA = 0.8
     cfg.MODEL.OV_HEAD.ENSEMBLE_ON_VALID_MASK = False
+
+    # SigLIP config
+    cfg.MODEL.OV_HEAD.SIGLIP_MODEL_NAME = "google/siglip-base-patch16-256"
